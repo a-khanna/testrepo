@@ -19,4 +19,4 @@ jobs:
     runs-on: [self-hosted, linux]
     steps:
     - name: Run tests
-      run: echo ${{ github.event.inputs.environment }}
+      run: echo ${{ lowercase(github.event.inputs.environment) }}
