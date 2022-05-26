@@ -6,6 +6,9 @@ on:
       select_env:
         type: environment
         description: Environment
+        options: 
+        - D1
+        - PP
         required: true
 
 env:
@@ -19,4 +22,4 @@ jobs:
     runs-on: [self-hosted, linux]
     steps:
     - name: Run tests
-      run: echo ${{ lowercase(github.event.inputs.environment) }}
+      run: echo ${{ github.event.inputs.environment }}
