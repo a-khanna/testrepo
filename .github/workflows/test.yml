@@ -1,0 +1,26 @@
+name: Integration Tests
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Environment(d1, pp, pr)
+        options: 
+        - d1
+        - pp
+        - pr
+        required: true
+
+env:
+  NUGET_PACKAGES: /opt/github/cache/${{ github.repository }}
+  DOTNET_VERSION: 3.1.x
+  DOTNET_ENVIRONMENT: ${{ github.event.inputs.environment }}
+
+jobs:
+  run-tests:
+    name: Running Integration tests in ${{ github.event.inputs.environment }}
+    runs-on: [self-hosted, linux]
+    steps:
+    - name: Run tests
+      run: echo ${{ github.event.inputs.environment }}
