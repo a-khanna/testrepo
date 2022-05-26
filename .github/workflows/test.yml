@@ -3,13 +3,9 @@ name: Integration Tests
 on: 
   workflow_dispatch:
     inputs:
-      environment:
-        type: choice
-        description: Environment(d1, pp, pr)
-        options: 
-        - d1
-        - pp
-        - pr
+      select_env:
+        type: environment
+        description: Environment
         required: true
 
 env:
